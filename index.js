@@ -13,7 +13,7 @@ var getProxyForUrl = require('proxy-from-env').getProxyForUrl;
 
 var http = require('http');
 var https = require('https');
-var PacProxyAgent = require('pac-proxy-agent');
+
 var HttpProxyAgent = require('http-proxy-agent');
 var HttpsProxyAgent = require('https-proxy-agent');
 var SocksProxyAgent = require('socks-proxy-agent');
@@ -52,9 +52,7 @@ exports.proxies.socks4a = SocksProxyAgent;
 exports.proxies.socks5 = SocksProxyAgent;
 exports.proxies.socks5h = SocksProxyAgent;
 
-PacProxyAgent.protocols.forEach(function (protocol) {
-  exports.proxies['pac+' + protocol] = PacProxyAgent;
-});
+
 
 function httpOrHttps(opts, secureEndpoint) {
   if (secureEndpoint) {
